@@ -76,7 +76,7 @@
         <repository>
             <id>github</id>
             <name>GitHub Packages</name>
-            <url>https://github.com/Sapper-Software/codekutter</url>
+            <url>https://maven.pkg.github.com/Sapper-Software/codekutter</url>
         </repository>
     </distributionManagement>
 
