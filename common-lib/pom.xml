@@ -32,6 +32,12 @@
 
     <name>common-lib</name>
     <url>https://github.com/subhagho/codekutter/tree/master/common-lib</url>
+    <repositories>
+        <repository>
+            <id>confluent</id>
+            <url>https://packages.confluent.io/maven/</url>
+        </repository>
+    </repositories>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

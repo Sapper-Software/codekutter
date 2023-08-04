@@ -35,6 +35,7 @@
 
     <name>codekutter</name>
     <url>https://github.com/subhagho/codekutter</url>
+    
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -58,10 +59,10 @@
             <id>release</id>
             <url>https://pkgs.dev.azure.com/codekutter/codekutter/_packaging/release/maven/v1</url>
         </snapshotRepository-->
-        <repository>
+        <!-- <repository>
             <id>release</id>
             <url>https://pkgs.dev.azure.com/codekutter/codekutter/_packaging/release/maven/v1</url>
-        </repository>
+        </repository> -->
         <!-- repository>
             <id>release</id>
             <name>Azure DevOps Release</name>
@@ -72,6 +73,11 @@
             <name>Azure DevOps Release</name>
             <url>https://pkgs.dev.azure.com/codekutter/codekutter/_packaging/release/maven/v1</url>
         </snapshotRepository -->
+        <repository>
+            <id>github</id>
+            <name>GitHub Packages</name>
+            <url>https://github.com/Sapper-Software/codekutter</url>
+        </repository>
     </distributionManagement>
 
     <repositories>
@@ -85,7 +91,7 @@
                 <enabled>true</enabled>
             </snapshots>
         </repository>
-        <repository>
+        <!-- <repository>
             <id>release</id>
             <url>https://pkgs.dev.azure.com/codekutter/codekutter/_packaging/release/maven/v1</url>
             <releases>
@@ -94,7 +100,7 @@
             <snapshots>
                 <enabled>true</enabled>
             </snapshots>
-        </repository>
+        </repository> -->
         <repository>
             <id>confluent</id>
             <url>http://packages.confluent.io/maven/</url>
@@ -154,7 +160,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.6</version>
+            <version>1.18.26</version>
             <scope>provided</scope>
         </dependency>
         <!-- https://mvnrepository.com/artifact/com.netflix.spectator/spectator-api -->
@@ -211,6 +217,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
+                <version>3.3.0</version>
                 <executions>
                     <execution>
                         <id>attach-sources</id>

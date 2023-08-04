@@ -1,0 +1,29 @@
+name: publish packages
+on:
+  push:
+    branches:
+      - release_v1.1.0
+  pull_request:
+    branches: 
+      - release_v1.1.0
+jobs:
+  publish:
+    runs-on: ubuntu-latest 
+    if: ${{ github.ref == 'refs/heads/release_v1.1.0' }}
+    steps:
+
+      - name: Checkout branch
+        uses: actions/checkout@v3
+        with:
+          ref: dependabot/maven/ch.qos.logback-logback-core-1.2.9
+          lfs: true
+
+      - uses: actions/setup-java@v3
+        with:
+          java-version: '11'
+          distribution: 'temurin'
+
+      - name: Publish package
+        run: mvn clean deploy
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
