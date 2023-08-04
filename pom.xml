@@ -51,10 +51,10 @@
             <name>Temporary Staging Repository</name>
             <url>file://${zconfig.common.target}/</url>
         </repository -->
-        <snapshotRepository>
+        <!-- <snapshotRepository>
             <id>ossrh</id>
             <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-        </snapshotRepository>
+        </snapshotRepository> -->
         <!--snapshotRepository>
             <id>release</id>
             <url>https://pkgs.dev.azure.com/codekutter/codekutter/_packaging/release/maven/v1</url>
