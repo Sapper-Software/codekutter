@@ -69,8 +69,4 @@ jobs:
         with:
           arguments: publish
         env:
-<<<<<<< Updated upstream
           GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
-=======
-          GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
->>>>>>> Stashed changes
