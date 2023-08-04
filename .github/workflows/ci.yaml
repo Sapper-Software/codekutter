@@ -1,4 +1,4 @@
-name: publish packages
+name: v1.1
 on:
   push:
     branches:
@@ -8,25 +8,69 @@ on:
       - release_v1.1.1
 jobs:
   publish:
-    permissions: 
-      contents: read
-      packages: write
     runs-on: ubuntu-latest 
     if: ${{ github.ref == 'refs/heads/release_v1.1.1' }}
+    permissions: 
+      contents: read
+      packages: write 
     steps:
 
       - name: Checkout branch
         uses: actions/checkout@v3
         with:
           ref: release_v1.1.1
-          lfs: true
 
       - uses: actions/setup-java@v3
         with:
           java-version: '11'
-          distribution: 'temurin'
+          distribution: 'adopt'
+
+
+      
+      - name: maven-settings-xml-action
+        uses: whelk-io/maven-settings-xml-action@v20
+        with:
+          repositories: >
+            [
+              {
+                "id": "central",
+                "name": "maven",
+                "url": "https://repo1.maven.org/maven2"
+              },
+
+              {
+                "id": "github",
+                "name": "github-packages",
+                "url": "https://maven.pkg.github.com/Sapper-Software/codekutter",
+                "snapshots": {
+                  "enabled": "true"
+                }
+              }
+            ]
+          servers: >
+            [
+              {
+                "id": "github",
+                "username": "codekutter",
+                "password": "${{ secrets.GIT_TOKEN }}"
+              }
+            ]
+          active_profiles: >
+            [
+              "github"
+            ]
+      
+      - name: Debug
+        run: |
+          cat ~/.m2/settings.xml
 
       - name: Publish package
-        run: mvn clean deploy
+        uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
+        with:
+          arguments: publish
         env:
+<<<<<<< Updated upstream
           GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
+=======
+          GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
+>>>>>>> Stashed changes
